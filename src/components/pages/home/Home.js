@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
 import { movieApi } from "../../../api";
+import { movieNum } from "../../../constants/constant";
+import { Loading } from "../../Loading";
+import { MainBanner } from "./MainBanner";
 
 export const Home = () => {
   const [playing, setPlaying] = useState();
   const [rated, setRated] = useState();
   const [comming, setComming] = useState();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const movieData = async () => {
@@ -28,6 +32,8 @@ export const Home = () => {
           data: { results: upCommingData },
         } = await movieApi.upComming();
         setComming(upCommingData);
+
+        setLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -35,9 +41,17 @@ export const Home = () => {
     movieData();
   }, []);
 
-  console.log("현재상영 영화:", playing);
-  console.log("인기 영화:", rated);
-  console.log("개봉예정 영화:", comming);
+  console.log(`현재상영 영화:`, playing);
+  // console.log("인기 영화:", rated);
+  // console.log("개봉예정 영화:", comming);
 
-  return <div>Home</div>;
+  return (
+    <div>
+      {loading ? (
+        <Loading />
+      ) : (
+        <>{playing && <MainBanner playData={playing[movieNum]} />}</>
+      )}
+    </div>
+  );
 };
