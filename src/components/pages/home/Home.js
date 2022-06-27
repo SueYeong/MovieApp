@@ -1,18 +1,43 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { movieApi } from "../../../api";
 
 export const Home = () => {
+  const [playing, setPlaying] = useState();
+  const [rated, setRated] = useState();
+  const [comming, setComming] = useState();
+
   useEffect(() => {
     const movieData = async () => {
-      const {
-        data: { results },
-      } = await movieApi.nowPlaying();
-      console.log(results[0].title);
-      // console.log(playing.date.results);
-      // console.log(await movieApi.nowPlaying());
+      try {
+        const {
+          data: { results: playingData },
+        } = await movieApi.nowPlaying();
+        // console.log(results[0].title);
+        // console.log(playing.date.results);
+        // console.log(await movieApi.nowPlaying());
+        setPlaying(playingData);
+
+        const {
+          data: { results: ratedData },
+        } = await movieApi.topRated();
+        // => 비구조화 할당 이용시 변수명 변경할땐
+        // 변수명:변경할명
+        setRated(ratedData);
+
+        const {
+          data: { results: upCommingData },
+        } = await movieApi.upComming();
+        setComming(upCommingData);
+      } catch (error) {
+        console.log(error);
+      }
     };
     movieData();
   }, []);
+
+  console.log("현재상영 영화:", playing);
+  console.log("인기 영화:", rated);
+  console.log("개봉예정 영화:", comming);
 
   return <div>Home</div>;
 };
