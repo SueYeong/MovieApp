@@ -6,13 +6,17 @@ const SHeader = styled.div`
   width: 100%;
   max-width: 100%;
   height: 80px;
-  padding: 0 80px;
+  padding: ${mainStyle.padding};
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 9;
+  @media screen and (max-width: 500px) {
+    padding: ${mainStyle.moPadding};
+  }
 `;
 
 const Logo = styled.h3`
@@ -20,6 +24,9 @@ const Logo = styled.h3`
   font-weight: 800;
   a {
     color: ${mainStyle.mainColor};
+  }
+  @media screen and (max-width: 500px) {
+    font-size: 24px;
   }
 `;
 
@@ -33,6 +40,9 @@ const Menu = styled.li`
   margin-left: 100px;
   font-size: 18px;
   font-weight: 500;
+  @media screen and (max-width: 500px) {
+    margin-left: 20px;
+  }
 `;
 
 export const Header = () => {
