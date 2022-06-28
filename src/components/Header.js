@@ -1,3 +1,5 @@
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../styles/globalStyle";
@@ -45,6 +47,10 @@ const Menu = styled.li`
   }
 `;
 
+const MoMenuWrap = styled.div``;
+
+const MoMenu = styled.div``;
+
 export const Header = () => {
   return (
     <SHeader>
@@ -60,6 +66,15 @@ export const Header = () => {
           <Link to={"/search"}>Search</Link>
         </Menu>
       </MenuWrap>
+      {/* <FontAwesomeIcon icon={faBars} /> */}
+      {/* <MoMenuWrap>
+        <MoMenu>
+          <Link to={"/"}>Home</Link>
+        </MoMenu>
+        <MoMenu>
+          <Link to={"/search"}>Search</Link>
+        </MoMenu>
+      </MoMenuWrap> */}
     </SHeader>
   );
 };
