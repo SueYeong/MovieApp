@@ -11,7 +11,7 @@
 - [x] Get Api
 - [x] Container
 - [x] Header Responsive
-- [ ] Main Container Responsive
+- [x] Main Container Responsive
 
 ## Main
 
