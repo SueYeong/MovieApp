@@ -48,7 +48,11 @@ export const Movies = ({ movieData, title }) => {
             <Link to={`detail/${play.id}`}>
               <MovieImg
                 style={{
-                  background: `url(${imgUrl}${play.backdrop_path}) no-repeat center / cover`,
+                  background: `url(${
+                    play.backdrop_path
+                      ? `${imgUrl}${play.backdrop_path}`
+                      : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
+                  }) no-repeat center / cover`,
                 }}
               />
               <MovieTitle>{play.title}</MovieTitle>
