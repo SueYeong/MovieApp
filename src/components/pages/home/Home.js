@@ -35,9 +35,9 @@ export const Home = () => {
         } = await movieApi.upComming();
         setComming(upCommingData);
 
-        setTimeout(() => {
-          setLoading(false);
-        }, 2000);
+        // setTimeout(() => {
+        setLoading(false);
+        // }, 2000);
       } catch (error) {
         console.log(error);
       }
