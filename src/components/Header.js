@@ -1,5 +1,6 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { mainStyle } from "../styles/globalStyle";
@@ -16,6 +17,8 @@ const SHeader = styled.div`
   top: 0;
   left: 0;
   z-index: 9;
+  background-color: ${(props) => props.bgColor};
+  transition: 0.5s;
   @media screen and (max-width: 500px) {
     padding: ${mainStyle.moPadding};
   }
@@ -52,8 +55,21 @@ const MoMenuWrap = styled.div``;
 const MoMenu = styled.div``;
 
 export const Header = () => {
+  const [bg, setBg] = useState("");
+
+  const handleScrollHeader = () => {
+    const sct = window.pageYOffset;
+    if (sct > 500) {
+      setBg("#1d1d1d");
+    } else {
+      setBg("transparent");
+    }
+  };
+
+  window.addEventListener("scroll", handleScrollHeader);
+
   return (
-    <SHeader>
+    <SHeader bgColor={bg}>
       <Logo>
         <Link to={"/"}>Sue-Movie</Link>
       </Logo>
