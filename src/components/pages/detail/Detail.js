@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
 import { imgUrl } from "../../../constants/constant";
-import { mainStyle } from "../../../styles/globalStyle";
+import { Container } from "../../Container";
 import { Loading } from "../../Loading";
 
 const Wrap = styled.div`
@@ -68,12 +68,8 @@ export const Detail = () => {
       setLoading(false);
     };
     detailDate();
-  }, []);
-  console.log(movieData);
-
-  const Container = styled.div`
-    padding: ${mainStyle.padding};
-  `;
+  }, [id]);
+  // console.log(movieData);
 
   return (
     <div>
