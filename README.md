@@ -26,8 +26,10 @@
 
 ## Detail page
 
-- [ ] Video
 - [ ] Link
+- [ ] Scroll error
+- [ ] responsive
+- [ ] Video
 
 ## Search page
 
