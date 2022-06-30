@@ -27,8 +27,8 @@
 ## Detail page
 
 - [x] Link
-- [x] Scroll error
-- [ ] responsive
+- [x] responsive
+- [ ] Scroll error
 - [ ] Video
 
 ## Search page
