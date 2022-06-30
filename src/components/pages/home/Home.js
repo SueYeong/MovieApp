@@ -45,9 +45,9 @@ export const Home = () => {
     movieData();
   }, []);
 
-  console.log(`현재상영 영화:`, playing);
-  console.log("인기 영화:", rated);
-  console.log("개봉예정 영화:", comming);
+  // console.log(`현재상영 영화:`, playing);
+  // console.log("인기 영화:", rated);
+  // console.log("개봉예정 영화:", comming);
 
   return (
     <div>
