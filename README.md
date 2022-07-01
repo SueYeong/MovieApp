@@ -28,7 +28,7 @@
 
 - [x] Link
 - [x] responsive
-- [ ] Scroll error
+- [x] ScrollTo
 - [ ] Video
 
 ## Search page
