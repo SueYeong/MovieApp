@@ -1,3 +1,10 @@
+import { PageTitle } from "../PageTitle";
+
 export const NotFound = () => {
-  return <div>NotFound</div>;
+  return (
+    <div>
+      <PageTitle title={"404 Error"} />
+      NotFound
+    </div>
+  );
 };

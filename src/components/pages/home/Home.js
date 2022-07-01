@@ -5,6 +5,7 @@ import { Loading } from "../../Loading";
 import { MainBanner } from "./MainBanner";
 import { Container } from "../../Container";
 import { Movies } from "./Movies";
+import { PageTitle } from "../../PageTitle";
 
 export const Home = () => {
   const [playing, setPlaying] = useState();
@@ -51,6 +52,7 @@ export const Home = () => {
 
   return (
     <div>
+      <PageTitle title={"Home"} />
       {loading ? (
         <Loading />
       ) : (
