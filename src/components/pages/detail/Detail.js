@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
 import { imgUrl } from "../../../constants/constant";
+import { ScrollTop } from "../../../ScrollTop";
 import { Container } from "../../Container";
 import { Loading } from "../../Loading";
 
@@ -83,6 +84,7 @@ export const Detail = () => {
 
   return (
     <div>
+      <ScrollTop />
       {loading ? (
         <Loading />
       ) : (
