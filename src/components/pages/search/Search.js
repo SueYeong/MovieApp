@@ -125,7 +125,11 @@ export const Search = () => {
                     <Link to={`/detail/${term.id}`}>
                       <Bg
                         style={{
-                          background: `url(${imgUrl}${term.backdrop_path}) no-repeat center / cover`,
+                          background: `url(${
+                            term.backdrop_path
+                              ? `${imgUrl}${term.backdrop_path}`
+                              : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
+                          }) no-repeat center / cover`,
                         }}
                       />
                       <Title>{term.title}</Title>
