@@ -6,6 +6,7 @@ import { MainBanner } from "./MainBanner";
 import { Container } from "../../Container";
 import { Movies } from "./Movies";
 import { PageTitle } from "../../PageTitle";
+import { Category } from "./Category";
 
 export const Home = () => {
   const [playing, setPlaying] = useState();
@@ -61,6 +62,7 @@ export const Home = () => {
             <>
               <MainBanner playData={playing[movieNum]} />
               <Container>
+                <Category />
                 <Movies movieData={playing} title={"현재 상영 영화"} />
                 <Movies movieData={rated} title={"인기 영화"} />
                 <Movies movieData={comming} title={"개봉 예정 영화"} />
