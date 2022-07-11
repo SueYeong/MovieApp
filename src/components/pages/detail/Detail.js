@@ -9,7 +9,7 @@ import { PageTitle } from "../../PageTitle";
 import { MovieDetail } from "./MovieDetail";
 
 const Iframe = styled.iframe`
-  width: 100%;
+  width: 50%;
   height: 700px;
   margin-top: 150px;
   @media screen and (max-width: 500px) {
@@ -21,6 +21,7 @@ const Iframe = styled.iframe`
 export const Detail = () => {
   const [movieData, setMovieData] = useState();
   const [videoData, setVideoData] = useState();
+  const [trailer, setTrailer] = useState();
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   // =>url주소에 있는 변수값을 가져옴
@@ -33,6 +34,7 @@ export const Detail = () => {
         data: { results },
       } = await movieApi.video(id);
       setVideoData(results.length === 0 ? null : results[0].key);
+      setTrailer(results.length === 0 ? null : results[1].key);
       setLoading(false);
     };
     detailDate();
@@ -51,6 +53,12 @@ export const Detail = () => {
           {videoData ? (
             <Iframe
               src={`https://www.youtube.com/embed/${videoData}`}
+              allowfullscreen
+            ></Iframe>
+          ) : null}
+          {trailer ? (
+            <Iframe
+              src={`https://www.youtube.com/embed/${trailer}`}
               allowfullscreen
             ></Iframe>
           ) : null}
