@@ -22,7 +22,6 @@ const Iframe = styled.iframe`
 
 export const Detail = () => {
   const [movieData, setMovieData] = useState();
-  const [videoData, setVideoData] = useState();
   const [trailer, setTrailer] = useState();
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -35,8 +34,6 @@ export const Detail = () => {
       const {
         data: { results },
       } = await movieApi.video(id);
-      // setVideoData(results.length === 0 ? null : results[0].key);
-      // setTrailer(results.length === 0 ? null : results[1].key);
       setTrailer(results);
       setLoading(false);
       // console.log(results);
@@ -55,19 +52,6 @@ export const Detail = () => {
       ) : (
         <Container>
           {movieData && <MovieDetail movieData={movieData} />}
-          {/* {videoData ? (
-            <Iframe
-              src={`https://www.youtube.com/embed/${videoData}`}
-              allowfullscreen
-            ></Iframe>
-          ) : null}
-          {trailer ? (
-            <Iframe
-              src={`https://www.youtube.com/embed/${trailer}`}
-              allowfullscreen
-            ></Iframe>
-          ) : null} */}
-
           {trailer &&
             trailer.map((trail) => (
               <Iframe
