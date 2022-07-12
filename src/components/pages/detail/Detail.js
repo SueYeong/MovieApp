@@ -7,11 +7,13 @@ import { Container } from "../../Container";
 import { Loading } from "../../Loading";
 import { PageTitle } from "../../PageTitle";
 import { MovieDetail } from "./MovieDetail";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 
 const Iframe = styled.iframe`
-  width: 50%;
+  width: 100%;
   height: 700px;
   margin-top: 150px;
   @media screen and (max-width: 500px) {
@@ -36,12 +38,23 @@ export const Detail = () => {
       } = await movieApi.video(id);
       setTrailer(results);
       setLoading(false);
-      // console.log(results);
     };
     detailDate();
   }, [id]);
-  // console.log(videoData);
-  console.log(trailer);
+  // console.log(trailer);
+
+  const params = {
+    breakpoints: {
+      320: {
+        slidesPerView: 2.2,
+        spaceBetween: 10,
+      },
+      640: {
+        slidesPerView: 3.5,
+        spaceBetween: 20,
+      },
+    },
+  };
 
   return (
     <div>
@@ -52,13 +65,17 @@ export const Detail = () => {
       ) : (
         <Container>
           {movieData && <MovieDetail movieData={movieData} />}
-          {trailer &&
-            trailer.map((trail) => (
-              <Iframe
-                src={`https://www.youtube.com/embed/${trail.key}`}
-                allowfullscreen
-              ></Iframe>
-            ))}
+          <Swiper modules={[Navigation]} navigation {...params}>
+            {trailer &&
+              trailer.map((trail) => (
+                <SwiperSlide key={trail.id}>
+                  <Iframe
+                    src={`https://www.youtube.com/embed/${trail.key}`}
+                    allowfullscreen
+                  ></Iframe>
+                </SwiperSlide>
+              ))}
+          </Swiper>
         </Container>
       )}
     </div>

@@ -31,7 +31,7 @@ const SCategory = styled.li`
   cursor: pointer;
 `;
 
-export const Category = () => {
+export const Category = ({ now, rate, com }) => {
   const [top, setTop] = useState("");
   window.scrollTo({
     top: top,
@@ -43,9 +43,15 @@ export const Category = () => {
     <Wrap>
       <Title>카테고리</Title>
       <CategoryWrap>
-        <SCategory onClick={() => setTop("1000")}>현재 상영 영화</SCategory>
-        <SCategory onClick={() => setTop("1496")}>인기 영화</SCategory>
-        <SCategory onClick={() => setTop("2128")}>개봉 예정 영화</SCategory>
+        <SCategory onClick={() => setTop(now.offsetTop - 100)}>
+          현재 상영 영화
+        </SCategory>
+        <SCategory onClick={() => setTop(rate.offsetTop - 100)}>
+          인기 영화
+        </SCategory>
+        <SCategory onClick={() => setTop(com.offsetTop - 100)}>
+          개봉 예정 영화
+        </SCategory>
       </CategoryWrap>
     </Wrap>
   );

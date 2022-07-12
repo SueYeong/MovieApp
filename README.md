@@ -23,6 +23,7 @@
 - [x] Slide Link
 - [x] 404 Image
 - [x] Header Event
+- [x] ScrollTo
 
 ## Detail page
 
@@ -30,6 +31,9 @@
 - [x] responsive
 - [x] ScrollTo
 - [x] Video
+- [x] Trailer
+- [ ] Pop Up
+- [ ] Hover
 
 ## Search page
 

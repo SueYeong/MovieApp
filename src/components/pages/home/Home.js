@@ -37,6 +37,8 @@ export const Home = () => {
         } = await movieApi.upComming();
         setComming(upCommingData);
 
+        console.log();
+
         // setTimeout(() => {
         setLoading(false);
         // }, 2000);
@@ -62,10 +64,20 @@ export const Home = () => {
             <>
               <MainBanner playData={playing[movieNum]} />
               <Container>
-                <Category />
-                <Movies movieData={playing} title={"현재 상영 영화"} />
-                <Movies movieData={rated} title={"인기 영화"} />
-                <Movies movieData={comming} title={"개봉 예정 영화"} />
+                <Category
+                  now={document.querySelector(".now")}
+                  rate={document.querySelector(".rate")}
+                  com={document.querySelector(".com")}
+                />
+                <div className="now">
+                  <Movies movieData={playing} title={"현재 상영 영화"} />
+                </div>
+                <div className="rate">
+                  <Movies movieData={rated} title={"인기 영화"} />
+                </div>
+                <div className="com">
+                  <Movies movieData={comming} title={"개봉 예정 영화"} />
+                </div>
               </Container>
             </>
           )}
