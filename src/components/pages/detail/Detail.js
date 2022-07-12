@@ -7,6 +7,8 @@ import { Container } from "../../Container";
 import { Loading } from "../../Loading";
 import { PageTitle } from "../../PageTitle";
 import { MovieDetail } from "./MovieDetail";
+import "swiper/css";
+import "swiper/css/navigation";
 
 const Iframe = styled.iframe`
   width: 50%;
@@ -33,13 +35,16 @@ export const Detail = () => {
       const {
         data: { results },
       } = await movieApi.video(id);
-      setVideoData(results.length === 0 ? null : results[0].key);
-      setTrailer(results.length === 0 ? null : results[1].key);
+      // setVideoData(results.length === 0 ? null : results[0].key);
+      // setTrailer(results.length === 0 ? null : results[1].key);
+      setTrailer(results);
       setLoading(false);
+      // console.log(results);
     };
     detailDate();
   }, [id]);
   // console.log(videoData);
+  console.log(trailer);
 
   return (
     <div>
@@ -50,7 +55,7 @@ export const Detail = () => {
       ) : (
         <Container>
           {movieData && <MovieDetail movieData={movieData} />}
-          {videoData ? (
+          {/* {videoData ? (
             <Iframe
               src={`https://www.youtube.com/embed/${videoData}`}
               allowfullscreen
@@ -61,7 +66,15 @@ export const Detail = () => {
               src={`https://www.youtube.com/embed/${trailer}`}
               allowfullscreen
             ></Iframe>
-          ) : null}
+          ) : null} */}
+
+          {trailer &&
+            trailer.map((trail) => (
+              <Iframe
+                src={`https://www.youtube.com/embed/${trail.key}`}
+                allowfullscreen
+              ></Iframe>
+            ))}
         </Container>
       )}
     </div>

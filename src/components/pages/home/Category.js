@@ -28,6 +28,7 @@ const SCategory = styled.li`
   border-radius: 50px;
   font-size: 25px;
   font-weight: 700;
+  cursor: pointer;
 `;
 
 export const Category = () => {
