@@ -1,17 +1,27 @@
 import styled from "styled-components";
 import { imgUrl } from "../../../constants/constant";
+import { mainStyle } from "../../../styles/globalStyle";
 
 const Wrap = styled.div`
+  width: 100%;
+`;
+
+const Bg = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-top: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  padding: ${mainStyle.padding};
+  padding-top: 100px;
+  padding-bottom: 100px;
   @media screen and (max-width: 500px) {
+    padding: ${mainStyle.moPadding};
     flex-direction: column;
   }
 `;
 
 const Con = styled.div`
-  width: 48%;
+  width: 45%;
   &:nth-child(1) {
     height: 80vh;
   }
@@ -62,27 +72,37 @@ const Desc = styled.p`
 
 export const MovieDetail = ({ movieData }) => {
   return (
-    <Wrap>
-      <Con
-        style={{
-          background: `url(${
-            movieData.backdrop_path
-              ? `${imgUrl}${movieData.backdrop_path}`
-              : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
-          }) no-repeat center / cover`,
-        }}
-      />
-      <Con>
-        <Title>{movieData.title}</Title>
-        <Release>개봉일: {movieData.release_date}</Release>
-        <RunTime>{movieData.runtime} 분</RunTime>
-        <Genres>
-          {movieData.genres.map((genre) => (
-            <li key={genre.id}>{genre.name}</li>
-          ))}
-        </Genres>
-        <Desc>{movieData.overview}</Desc>
-      </Con>
+    <Wrap
+      style={{
+        background: `url(${
+          movieData.backdrop_path
+            ? `${imgUrl}${movieData.backdrop_path}`
+            : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
+        }) no-repeat center / cover`,
+      }}
+    >
+      <Bg>
+        <Con
+          style={{
+            background: `url(${
+              movieData.backdrop_path
+                ? `${imgUrl}${movieData.backdrop_path}`
+                : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
+            }) no-repeat center / cover`,
+          }}
+        />
+        <Con>
+          <Title>{movieData.title}</Title>
+          <Release>개봉일: {movieData.release_date}</Release>
+          <RunTime>{movieData.runtime} 분</RunTime>
+          <Genres>
+            {movieData.genres.map((genre) => (
+              <li key={genre.id}>{genre.name}</li>
+            ))}
+          </Genres>
+          <Desc>{movieData.overview}</Desc>
+        </Con>
+      </Bg>
     </Wrap>
   );
 };

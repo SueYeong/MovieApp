@@ -21,4 +21,5 @@ export const movieApi = {
         query: term,
       },
     }),
+  similar: (id) => api.get(`movie/${id}/similar`),
 };

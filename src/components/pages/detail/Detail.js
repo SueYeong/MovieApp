@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
 import { ScrollTop } from "../../../ScrollTop";
-import { Container } from "../../Container";
 import { Loading } from "../../Loading";
 import { PageTitle } from "../../PageTitle";
 import { MovieDetail } from "./MovieDetail";
@@ -11,6 +10,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Container } from "../../Container";
+import { imgUrl } from "../../../constants/constant";
 
 const Iframe = styled.iframe`
   width: 100%;
@@ -22,9 +23,23 @@ const Iframe = styled.iframe`
   }
 `;
 
+const ConWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 30px;
+  row-gap: 50px;
+  margin-top: 150px;
+  margin-top: 120px;
+`;
+
+const Con = styled.div`
+  height: 250px;
+`;
+
 export const Detail = () => {
   const [movieData, setMovieData] = useState();
   const [trailer, setTrailer] = useState();
+  const [similar, setSimilar] = useState();
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   // =>url주소에 있는 변수값을 가져옴
@@ -37,11 +52,16 @@ export const Detail = () => {
         data: { results },
       } = await movieApi.video(id);
       setTrailer(results);
+      const {
+        data: { results: simil },
+      } = await movieApi.similar(id);
+      setSimilar(simil);
       setLoading(false);
     };
     detailDate();
   }, [id]);
   // console.log(trailer);
+  // console.log(movieApi.similar(id));
 
   const params = {
     breakpoints: {
@@ -63,20 +83,33 @@ export const Detail = () => {
       {loading ? (
         <Loading />
       ) : (
-        <Container>
+        <div>
           {movieData && <MovieDetail movieData={movieData} />}
-          <Swiper modules={[Navigation]} navigation {...params}>
-            {trailer &&
-              trailer.map((trail) => (
-                <SwiperSlide key={trail.id}>
-                  <Iframe
-                    src={`https://www.youtube.com/embed/${trail.key}`}
-                    allowfullscreen
-                  ></Iframe>
-                </SwiperSlide>
-              ))}
-          </Swiper>
-        </Container>
+          <Container>
+            <Swiper modules={[Navigation]} navigation {...params}>
+              {trailer &&
+                trailer.map((trail) => (
+                  <SwiperSlide key={trail.id}>
+                    <Iframe
+                      src={`https://www.youtube.com/embed/${trail.key}`}
+                      allowfullscreen
+                    ></Iframe>
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+
+            <ConWrap>
+              {similar &&
+                similar.map((simil) => (
+                  <Con
+                    style={{
+                      background: `url(${imgUrl}${simil.backdrop_path}) no-repeat center / cover`,
+                    }}
+                  ></Con>
+                ))}
+            </ConWrap>
+          </Container>
+        </div>
       )}
     </div>
   );
