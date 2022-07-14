@@ -20,7 +20,7 @@ const CategoryWrap = styled.ul`
 
 const SCategory = styled.li`
   width: 20%;
-  height: 75px;
+  padding: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,7 +28,15 @@ const SCategory = styled.li`
   border-radius: 50px;
   font-size: 25px;
   font-weight: 700;
+  text-align: center;
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    width: 30%;
+    padding: 10px;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 20px;
+  }
 `;
 
 export const Category = ({ now, rate, com }) => {

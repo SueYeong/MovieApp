@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
 import { ScrollTop } from "../../../ScrollTop";
@@ -16,10 +16,8 @@ import { imgUrl } from "../../../constants/constant";
 const Iframe = styled.iframe`
   width: 100%;
   height: 700px;
-  margin-top: 150px;
   @media screen and (max-width: 500px) {
     height: 60vh;
-    margin-top: 100px;
   }
 `;
 
@@ -34,15 +32,26 @@ const ConWrap = styled.div`
   grid-template-columns: repeat(5, 1fr);
   column-gap: 30px;
   row-gap: 50px;
+  @media screen and (max-width: 500px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+  }
 `;
 
 const Con = styled.div`
   height: 250px;
+  @media screen and (max-width: 500px) {
+    height: 150px;
+  }
 `;
 
 const STitle = styled.h3`
   font-size: 18px;
   margin-top: 20px;
+  @media screen and (max-width: 500px) {
+    margin-top: 10px;
+  }
 `;
 
 export const Detail = () => {
@@ -95,12 +104,14 @@ export const Detail = () => {
         <div>
           {movieData && <MovieDetail movieData={movieData} />}
           <Container>
+            {trailer.length > 0 ? <Title>트레일러</Title> : null}
             <Swiper modules={[Navigation]} navigation {...params}>
               {trailer &&
                 trailer.map((trail) => (
                   <SwiperSlide key={trail.id}>
                     <Iframe
                       src={`https://www.youtube.com/embed/${trail.key}`}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen
                     ></Iframe>
                   </SwiperSlide>
@@ -111,13 +122,15 @@ export const Detail = () => {
             <ConWrap>
               {similar &&
                 similar.map((simil) => (
-                  <div>
-                    <Con
-                      style={{
-                        background: `url(${imgUrl}${simil.backdrop_path}) no-repeat center / cover`,
-                      }}
-                    ></Con>
-                    <STitle>{simil.title}</STitle>
+                  <div key={simil.id}>
+                    <Link to={`/detail/${simil.id}`}>
+                      <Con
+                        style={{
+                          background: `url(${imgUrl}${simil.backdrop_path}) no-repeat center / cover`,
+                        }}
+                      ></Con>
+                      <STitle>{simil.title}</STitle>
+                    </Link>
                   </div>
                 ))}
             </ConWrap>

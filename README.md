@@ -24,16 +24,18 @@
 - [x] 404 Image
 - [x] Header Event
 - [x] ScrollTo
+- [x] responsive
 
 ## Detail page
 
 - [x] Link
-- [x] responsive
 - [x] ScrollTo
 - [x] Video
 - [x] Trailer
+- [x] responsive
 - [ ] Pop Up
 - [ ] Hover
+- [ ] 404 Image
 
 ## Search page
 

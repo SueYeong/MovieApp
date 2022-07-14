@@ -24,6 +24,9 @@ const Con = styled.div`
   width: 45%;
   &:nth-child(1) {
     height: 80vh;
+    @media screen and (max-width: 500px) {
+      margin-top: 100px;
+    }
   }
   @media screen and (max-width: 500px) {
     width: 100%;
