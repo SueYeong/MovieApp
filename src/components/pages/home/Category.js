@@ -20,7 +20,7 @@ const CategoryWrap = styled.ul`
 
 const SCategory = styled.li`
   width: 20%;
-  padding: 25px;
+  height: 75px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -32,7 +32,7 @@ const SCategory = styled.li`
   cursor: pointer;
   @media screen and (max-width: 500px) {
     width: 30%;
-    padding: 10px;
+    height: 50px;
     font-size: 18px;
     text-align: center;
     border-radius: 20px;

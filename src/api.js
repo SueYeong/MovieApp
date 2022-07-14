@@ -22,4 +22,5 @@ export const movieApi = {
       },
     }),
   similar: (id) => api.get(`movie/${id}/similar`),
+  credits: (id) => api.get(`movie/${id}/credits`),
 };

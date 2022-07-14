@@ -57,6 +57,7 @@ const STitle = styled.h3`
 export const Detail = () => {
   const [movieData, setMovieData] = useState();
   const [trailer, setTrailer] = useState();
+  const [credit, setCredit] = useState();
   const [similar, setSimilar] = useState();
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
@@ -71,6 +72,10 @@ export const Detail = () => {
       } = await movieApi.video(id);
       setTrailer(results);
       const {
+        data: { cast },
+      } = await movieApi.credits(id);
+      setCredit(cast);
+      const {
         data: { results: alike },
       } = await movieApi.similar(id);
       setSimilar(alike);
@@ -79,7 +84,7 @@ export const Detail = () => {
     detailDate();
   }, [id]);
   // console.log(trailer);
-  console.log(movieApi.similar(id));
+  console.log(credit);
 
   const params = {
     breakpoints: {
