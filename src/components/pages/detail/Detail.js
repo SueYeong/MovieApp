@@ -23,17 +23,26 @@ const Iframe = styled.iframe`
   }
 `;
 
+const Title = styled.h3`
+  font-size: 40px;
+  font-weight: 700;
+  margin: 120px 0 30px 0;
+`;
+
 const ConWrap = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   column-gap: 30px;
   row-gap: 50px;
-  margin-top: 150px;
-  margin-top: 120px;
 `;
 
 const Con = styled.div`
   height: 250px;
+`;
+
+const STitle = styled.h3`
+  font-size: 18px;
+  margin-top: 20px;
 `;
 
 export const Detail = () => {
@@ -53,15 +62,15 @@ export const Detail = () => {
       } = await movieApi.video(id);
       setTrailer(results);
       const {
-        data: { results: simil },
+        data: { results: alike },
       } = await movieApi.similar(id);
-      setSimilar(simil);
+      setSimilar(alike);
       setLoading(false);
     };
     detailDate();
   }, [id]);
   // console.log(trailer);
-  // console.log(movieApi.similar(id));
+  console.log(movieApi.similar(id));
 
   const params = {
     breakpoints: {
@@ -98,14 +107,18 @@ export const Detail = () => {
                 ))}
             </Swiper>
 
+            <Title>관련 영화</Title>
             <ConWrap>
               {similar &&
                 similar.map((simil) => (
-                  <Con
-                    style={{
-                      background: `url(${imgUrl}${simil.backdrop_path}) no-repeat center / cover`,
-                    }}
-                  ></Con>
+                  <div>
+                    <Con
+                      style={{
+                        background: `url(${imgUrl}${simil.backdrop_path}) no-repeat center / cover`,
+                      }}
+                    ></Con>
+                    <STitle>{simil.title}</STitle>
+                  </div>
                 ))}
             </ConWrap>
           </Container>
