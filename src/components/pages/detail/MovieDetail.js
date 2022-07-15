@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import { imgUrl } from "../../../constants/constant";
 import { mainStyle } from "../../../styles/globalStyle";
@@ -73,7 +74,45 @@ const Desc = styled.p`
   letter-spacing: 0.5px;
 `;
 
-export const MovieDetail = ({ movieData }) => {
+const More = styled.div`
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+`;
+
+const PlusBtn = styled.div`
+  font-size: 25px;
+  margin-left: 10px;
+  cursor: pointer;
+`;
+
+const CastTitle = styled.h3`
+  font-size: 20px;
+  font-weight: 600;
+`;
+
+const CastWrap = styled.div`
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  column-gap: 20px;
+  row-gap: 20px;
+`;
+
+const CastImg = styled.div`
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  margin-top: 20px;
+`;
+
+const CastName = styled.p`
+  font-size: 18px;
+  font-weight: 300;
+`;
+
+export const MovieDetail = ({ movieData, credit }) => {
+  const [more, setMore] = useState("16");
+  const creditdata = credit.slice(0, more);
   return (
     <Wrap
       style={{
@@ -89,9 +128,9 @@ export const MovieDetail = ({ movieData }) => {
           style={{
             background: `url(${
               movieData.backdrop_path
-                ? `${imgUrl}${movieData.backdrop_path}`
+                ? `${imgUrl}${movieData.poster_path}`
                 : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
-            }) no-repeat center / cover`,
+            }) no-repeat center / contain`,
           }}
         />
         <Con>
@@ -104,6 +143,26 @@ export const MovieDetail = ({ movieData }) => {
             ))}
           </Genres>
           <Desc>{movieData.overview}</Desc>
+          <More>
+            <CastTitle>출연인물</CastTitle>
+            <PlusBtn onClick={() => setMore("28")}>+</PlusBtn>
+          </More>
+          <CastWrap>
+            {creditdata.map((credits) => (
+              <div>
+                <CastImg
+                  style={{
+                    background: `url(${
+                      credits.profile_path
+                        ? `${imgUrl}${credits.profile_path}`
+                        : "https://www.pngkit.com/png/full/372-3729814_profile-icon-my-profile-icon-png.png"
+                    }) no-repeat center / cover`,
+                  }}
+                ></CastImg>
+                <CastName>{credits.name}</CastName>
+              </div>
+            ))}
+          </CastWrap>
         </Con>
       </Bg>
     </Wrap>

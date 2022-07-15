@@ -84,7 +84,7 @@ export const Detail = () => {
     detailDate();
   }, [id]);
   // console.log(trailer);
-  console.log(credit);
+  // console.log(credit);
 
   const params = {
     breakpoints: {
@@ -107,7 +107,7 @@ export const Detail = () => {
         <Loading />
       ) : (
         <div>
-          {movieData && <MovieDetail movieData={movieData} />}
+          {movieData && <MovieDetail movieData={movieData} credit={credit} />}
           <Container>
             {trailer.length > 0 ? <Title>트레일러</Title> : null}
             <Swiper modules={[Navigation]} navigation {...params}>

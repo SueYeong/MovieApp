@@ -25,6 +25,7 @@
 - [x] Header Event
 - [x] ScrollTo
 - [x] responsive
+- [ ] Pop Up
 
 ## Detail page
 
@@ -33,9 +34,7 @@
 - [x] Video
 - [x] Trailer
 - [x] responsive
-- [ ] Pop Up
-- [ ] Hover
-- [ ] 404 Image
+- [x] 404 Image
 
 ## Search page
 
