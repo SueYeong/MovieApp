@@ -96,6 +96,10 @@ const CastWrap = styled.div`
   grid-template-columns: repeat(6, 1fr);
   column-gap: 20px;
   row-gap: 20px;
+  @media screen and (max-width: 500px) {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const CastImg = styled.div`
@@ -108,6 +112,7 @@ const CastImg = styled.div`
 const CastName = styled.p`
   font-size: 18px;
   font-weight: 300;
+  margin-top: 10px;
 `;
 
 export const MovieDetail = ({ movieData, credit }) => {
@@ -145,7 +150,9 @@ export const MovieDetail = ({ movieData, credit }) => {
           <Desc>{movieData.overview}</Desc>
           <More>
             <CastTitle>출연인물</CastTitle>
-            <PlusBtn onClick={() => setMore("28")}>+</PlusBtn>
+            <PlusBtn onClick={() => setMore(`${more === "16" ? "28" : "16"}`)}>
+              +
+            </PlusBtn>
           </More>
           <CastWrap>
             {creditdata.map((credits) => (

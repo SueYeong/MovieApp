@@ -64,11 +64,11 @@ export const Home = () => {
             <>
               <MainBanner playData={playing[movieNum]} />
               <Container>
-                <Category
+                {/* <Category
                   now={document.querySelector(".now")}
                   rate={rateEl && rateEl}
                   com={document.querySelector(".com")}
-                />
+                /> */}
                 <div className="now">
                   <Movies movieData={playing} title={"현재 상영 영화"} />
                 </div>
