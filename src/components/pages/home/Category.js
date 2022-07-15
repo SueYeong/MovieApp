@@ -41,6 +41,10 @@ const SCategory = styled.li`
 
 export const Category = ({ now, rate, com }) => {
   const [top, setTop] = useState("");
+  // const nowTop = now && now.offsetTop - 100;
+  // const rateTop = rate && rate.offsetTop - 100;
+  // const comTop = com && com.offsetTop - 100;
+  console.log(now, rate, com);
   window.scrollTo({
     top: top,
     left: 0,
@@ -51,13 +55,13 @@ export const Category = ({ now, rate, com }) => {
     <Wrap>
       <Title>카테고리</Title>
       <CategoryWrap>
-        <SCategory onClick={() => setTop(now.offsetTop - 100)}>
+        <SCategory onClick={() => setTop(now && now.offsetTop - 100)}>
           현재 상영 영화
         </SCategory>
-        <SCategory onClick={() => setTop(rate.offsetTop - 100)}>
+        <SCategory onClick={() => setTop(rate && rate.offsetTop - 100)}>
           인기 영화
         </SCategory>
-        <SCategory onClick={() => setTop(com.offsetTop - 100)}>
+        <SCategory onClick={() => setTop(com && com.offsetTop - 100)}>
           개봉 예정 영화
         </SCategory>
       </CategoryWrap>
