@@ -44,7 +44,8 @@ export const Category = ({ now, rate, com }) => {
   // const nowTop = now && now.offsetTop - 100;
   // const rateTop = rate && rate.offsetTop - 100;
   // const comTop = com && com.offsetTop - 100;
-  console.log(now, rate, com);
+  // console.log(now, rate, com);
+  console.log(rate);
   window.scrollTo({
     top: top,
     left: 0,

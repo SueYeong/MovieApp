@@ -52,7 +52,7 @@ export const Home = () => {
   // console.log(`현재상영 영화:`, playing);
   // console.log("인기 영화:", rated);
   // console.log("개봉예정 영화:", comming);
-
+  const rateEl = document.querySelector(".rate");
   return (
     <div>
       <PageTitle title={"Home"} />
@@ -66,7 +66,7 @@ export const Home = () => {
               <Container>
                 <Category
                   now={document.querySelector(".now")}
-                  rate={document.querySelector(".rate")}
+                  rate={rateEl && rateEl}
                   com={document.querySelector(".com")}
                 />
                 <div className="now">
