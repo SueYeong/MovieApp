@@ -11,7 +11,7 @@ import { Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Container } from "../../Container";
-import { imgUrl } from "../../../constants/constant";
+import { imgUrl_500 } from "../../../constants/constant";
 
 const Iframe = styled.iframe`
   width: 100%;
@@ -131,7 +131,11 @@ export const Detail = () => {
                     <Link to={`/detail/${simil.id}`}>
                       <Con
                         style={{
-                          background: `url(${imgUrl}${simil.backdrop_path}) no-repeat center / cover`,
+                          background: `url(${
+                            simil.backdrop_path
+                              ? `${imgUrl_500}${simil.backdrop_path}`
+                              : `https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg`
+                          }) no-repeat center / cover`,
                         }}
                       ></Con>
                       <STitle>{simil.title}</STitle>

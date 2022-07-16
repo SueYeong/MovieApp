@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { imgUrl } from "../../../constants/constant";
+import { imgUrl, imgUrl_500 } from "../../../constants/constant";
 import { mainStyle } from "../../../styles/globalStyle";
 
 const Wrap = styled.div`
@@ -9,12 +9,11 @@ const Wrap = styled.div`
 
 const Bg = styled.div`
   display: flex;
-  justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   padding: ${mainStyle.padding};
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding: 100px 0;
   @media screen and (max-width: 500px) {
     padding: ${mainStyle.moPadding};
     flex-direction: column;
@@ -116,7 +115,7 @@ const CastName = styled.p`
 `;
 
 export const MovieDetail = ({ movieData, credit }) => {
-  const [more, setMore] = useState("16");
+  const [more, setMore] = useState("4");
   const creditdata = credit.slice(0, more);
   return (
     <Wrap
@@ -124,7 +123,7 @@ export const MovieDetail = ({ movieData, credit }) => {
         background: `url(${
           movieData.backdrop_path
             ? `${imgUrl}${movieData.backdrop_path}`
-            : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
+            : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
         }) no-repeat center / cover`,
       }}
     >
@@ -134,7 +133,7 @@ export const MovieDetail = ({ movieData, credit }) => {
             background: `url(${
               movieData.backdrop_path
                 ? `${imgUrl}${movieData.poster_path}`
-                : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
+                : "https://icon-library.com/images/no-image-icon/no-image-icon-0.jpg"
             }) no-repeat center / contain`,
           }}
         />
@@ -150,7 +149,7 @@ export const MovieDetail = ({ movieData, credit }) => {
           <Desc>{movieData.overview}</Desc>
           <More>
             <CastTitle>출연인물</CastTitle>
-            <PlusBtn onClick={() => setMore(`${more === "16" ? "28" : "16"}`)}>
+            <PlusBtn onClick={() => setMore(`${more === "4" ? "28" : "4"}`)}>
               +
             </PlusBtn>
           </More>
@@ -161,7 +160,7 @@ export const MovieDetail = ({ movieData, credit }) => {
                   style={{
                     background: `url(${
                       credits.profile_path
-                        ? `${imgUrl}${credits.profile_path}`
+                        ? `${imgUrl_500}${credits.profile_path}`
                         : "https://www.pngkit.com/png/full/372-3729814_profile-icon-my-profile-icon-png.png"
                     }) no-repeat center / cover`,
                   }}

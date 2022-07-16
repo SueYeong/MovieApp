@@ -1,3 +1,5 @@
+import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { imgUrl } from "../../../constants/constant";
 import { mainStyle } from "../../../styles/globalStyle";
@@ -46,6 +48,17 @@ const Desc = styled.div`
   }
 `;
 
+const Preview = styled.h3`
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 20px;
+  position: relative;
+  z-index: 8;
+  svg {
+    margin-left: 10px;
+  }
+`;
+
 const BlackBg = styled.div`
   width: 100%;
   height: 60vh;
@@ -68,6 +81,11 @@ export const MainBanner = ({ playData }) => {
     >
       <Title>{playData.title}</Title>
       <Desc>{playData.overview.slice(0, 100) + "..."}</Desc>
+      <Preview>
+        미리보기
+        <FontAwesomeIcon icon={faCirclePlay} />
+      </Preview>
+
       <BlackBg />
     </Banner>
   );

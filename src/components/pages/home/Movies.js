@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper";
-import { imgUrl } from "../../../constants/constant";
+import { imgUrl_500 } from "../../../constants/constant";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import "swiper/css";
@@ -50,7 +50,7 @@ export const Movies = ({ movieData, title }) => {
                 style={{
                   background: `url(${
                     play.backdrop_path
-                      ? `${imgUrl}${play.backdrop_path}`
+                      ? `${imgUrl_500}${play.backdrop_path}`
                       : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
                   }) no-repeat center / cover`,
                 }}
