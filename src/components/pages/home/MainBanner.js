@@ -80,7 +80,7 @@ const PopUp = styled.div`
 const CloseBtn = styled.div`
   position: absolute;
   top: 100px;
-  right: 100px;
+  right: 120px;
   font-size: 50px;
   z-index: 9;
   cursor: pointer;
@@ -108,7 +108,7 @@ const BlackBg = styled.div`
 export const MainBanner = ({ playData }) => {
   // console.log(playData.id);
   const [previewData, setPreviewData] = useState();
-  const [display, setDisplay] = useState("flex");
+  const [display, setDisplay] = useState("none");
 
   const { id } = useParams();
   console.log(id);
