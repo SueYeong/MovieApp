@@ -20,13 +20,25 @@ const MovieImg = styled.div`
   height: 250px;
 `;
 
+const MovieInformation = styled.p`
+  display: flex;
+  flex-direction: column;
+`;
+
 const MovieTitle = styled.p`
   font-size: 18px;
   margin-top: 20px;
 `;
 
+const VoteAverage = styled.p`
+  font-size: 18px;
+  margin-top: 10px;
+  span {
+    margin: 0 10px;
+  }
+`;
+
 export const Movies = ({ movieData, title }) => {
-  // console.log(movieData);
   const params = {
     breakpoints: {
       320: {
@@ -56,7 +68,13 @@ export const Movies = ({ movieData, title }) => {
                   }) no-repeat center / cover`,
                 }}
               />
-              <MovieTitle>{play.title}</MovieTitle>
+              <MovieInformation>
+                <MovieTitle>{play.title}</MovieTitle>
+                <VoteAverage>
+                  평점<span>:</span>
+                  {play.vote_average}
+                </VoteAverage>
+              </MovieInformation>
             </Link>
           </SwiperSlide>
         ))}

@@ -155,7 +155,7 @@ export const MovieDetail = ({ movieData, credit }) => {
           </More>
           <CastWrap>
             {creditdata.map((credits) => (
-              <div>
+              <div key={credits.id}>
                 <CastImg
                   style={{
                     background: `url(${

@@ -39,33 +39,45 @@ const SCategory = styled.li`
   }
 `;
 
-export const Category = ({ now, rate, com }) => {
-  const [top, setTop] = useState("");
-  window.scrollTo({
-    top: top,
-    left: 0,
-    behavior: "smooth",
-  });
+export const Category = () => {
+  const onClickHandle = (elc) => {
+    const nowElH = document.querySelector(elc).offsetTop - 100;
+    console.log(nowElH);
+    window.scrollTo({
+      top: nowElH,
+      left: 0,
+      behavior: "smooth",
+    });
 
-  const onClickHandle = () => {
-    const nowEl = document.querySelector(".nowEl");
-    setTop(nowEl && nowEl.offsetTop - 100);
+    // scrollEvent();
   };
 
   return (
     <Wrap>
       <Title>카테고리</Title>
       <CategoryWrap>
-        <div className="nowEl" onClick={onClickHandle}>
-          <SCategory>현재 상영 영화</SCategory>
-        </div>
+        <SCategory
+          onClick={() => {
+            onClickHandle(".now");
+          }}
+        >
+          현재 상영 영화
+        </SCategory>
 
-        {/* <SCategory onClick={() => setTop(rate && rate.offsetTop - 100)}>
+        <SCategory
+          onClick={() => {
+            onClickHandle(".rate");
+          }}
+        >
           인기 영화
         </SCategory>
-        <SCategory onClick={() => setTop(com && com.offsetTop - 100)}>
+        <SCategory
+          onClick={() => {
+            onClickHandle(".com");
+          }}
+        >
           개봉 예정 영화
-        </SCategory> */}
+        </SCategory>
       </CategoryWrap>
     </Wrap>
   );
