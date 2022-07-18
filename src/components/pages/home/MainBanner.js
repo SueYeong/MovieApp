@@ -1,6 +1,9 @@
 import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
+import { movieApi } from "../../../api";
 import { imgUrl } from "../../../constants/constant";
 import { mainStyle } from "../../../styles/globalStyle";
 
@@ -54,9 +57,39 @@ const Preview = styled.h3`
   margin-top: 20px;
   position: relative;
   z-index: 8;
+  cursor: pointer;
   svg {
     margin-left: 10px;
   }
+`;
+
+const PopUp = styled.div`
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: ${(props) => props.displayresult};
+`;
+
+const CloseBtn = styled.div`
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  font-size: 50px;
+  z-index: 9;
+  cursor: pointer;
+`;
+
+const Iframe = styled.iframe`
+  width: 80%;
+  height: 700px;
+  border: 1px solid white;
 `;
 
 const BlackBg = styled.div`
@@ -73,6 +106,23 @@ const BlackBg = styled.div`
 `;
 
 export const MainBanner = ({ playData }) => {
+  // console.log(playData.id);
+  const [previewData, setPreviewData] = useState();
+  const [display, setDisplay] = useState("flex");
+
+  const { id } = useParams();
+  console.log(id);
+  useEffect(() => {
+    const homedata = async () => {
+      const {
+        data: { results },
+      } = await movieApi.video(playData.id);
+      setPreviewData(results[0].key);
+    };
+    // console.log(previewdata);
+    homedata();
+  }, []);
+
   return (
     <Banner
       style={{
@@ -81,11 +131,19 @@ export const MainBanner = ({ playData }) => {
     >
       <Title>{playData.title}</Title>
       <Desc>{playData.overview.slice(0, 100) + "..."}</Desc>
-      <Preview>
+      <Preview onClick={() => setDisplay("flex")}>
         미리보기
         <FontAwesomeIcon icon={faCirclePlay} />
       </Preview>
-
+      {previewData ? (
+        <PopUp displayresult={display}>
+          <CloseBtn onClick={() => setDisplay("none")}>x</CloseBtn>
+          <Iframe
+            src={`https://www.youtube.com/embed/${previewData}`}
+            allowfullscreen
+          ></Iframe>
+        </PopUp>
+      ) : null}
       <BlackBg />
     </Banner>
   );
