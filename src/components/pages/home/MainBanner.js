@@ -89,8 +89,8 @@ const CloseBtn = styled.div`
   z-index: 9;
   cursor: pointer;
   @media screen and (max-width: 500px) {
-    font-size: 25px;
-    top: 28px;
+    font-size: 28px;
+    top: 25px;
     right: 22px;
   }
 `;
