@@ -65,21 +65,25 @@ export const Detail = () => {
 
   useEffect(() => {
     const detailDate = async () => {
-      const { data } = await movieApi.movieDetail(id);
-      setMovieData(data);
-      const {
-        data: { results },
-      } = await movieApi.video(id);
-      setTrailer(results);
-      const {
-        data: { cast },
-      } = await movieApi.credits(id);
-      setCredit(cast);
-      const {
-        data: { results: alike },
-      } = await movieApi.similar(id);
-      setSimilar(alike);
-      setLoading(false);
+      try {
+        const { data } = await movieApi.movieDetail(id);
+        setMovieData(data);
+        const {
+          data: { results },
+        } = await movieApi.video(id);
+        setTrailer(results);
+        const {
+          data: { cast },
+        } = await movieApi.credits(id);
+        setCredit(cast);
+        const {
+          data: { results: alike },
+        } = await movieApi.similar(id);
+        setSimilar(alike);
+        setLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
     };
     detailDate();
   }, [id]);

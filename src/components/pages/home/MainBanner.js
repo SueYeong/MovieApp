@@ -123,12 +123,15 @@ export const MainBanner = ({ playData }) => {
 
   useEffect(() => {
     const homedata = async () => {
-      const {
-        data: { results },
-      } = await movieApi.video(playData.id);
-      setPreviewData(results[0].key);
+      try {
+        const {
+          data: { results },
+        } = await movieApi.video(playData.id);
+        setPreviewData(results[0].key);
+      } catch (error) {
+        console.log(error);
+      }
     };
-
     homedata();
   }, [playData.id]);
 

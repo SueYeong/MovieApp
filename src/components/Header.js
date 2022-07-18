@@ -135,10 +135,14 @@ export const Header = () => {
             <FontAwesomeIcon icon={faClose} />
           </CloseBtn>
           <li>
-            <Link to={"/"}>Home</Link>
+            <Link to={"/"} onClick={() => setLeft("100%")}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to={"/search"}>Search</Link>
+            <Link to={"/search"} onClick={() => setLeft("100%")}>
+              Search
+            </Link>
           </li>
         </MoMenuWrap>
       </MoMenu>
