@@ -24,12 +24,16 @@ const Con = styled.div`
   width: 45%;
   &:nth-child(1) {
     height: 80vh;
-    @media screen and (max-width: 500px) {
-      margin-top: 100px;
-    }
   }
   @media screen and (max-width: 500px) {
     width: 100%;
+    margin: 100px 0;
+    &:nth-child(1) {
+      margin-bottom: 0;
+    }
+    &:nth-child(2) {
+      margin-top: 0;
+    }
   }
 `;
 
@@ -154,20 +158,21 @@ export const MovieDetail = ({ movieData, credit }) => {
             </PlusBtn>
           </More>
           <CastWrap>
-            {creditdata.map((credits) => (
-              <div key={credits.id}>
-                <CastImg
-                  style={{
-                    background: `url(${
-                      credits.profile_path
-                        ? `${imgUrl_500}${credits.profile_path}`
-                        : "https://www.pngkit.com/png/full/372-3729814_profile-icon-my-profile-icon-png.png"
-                    }) no-repeat center / cover`,
-                  }}
-                ></CastImg>
-                <CastName>{credits.name}</CastName>
-              </div>
-            ))}
+            {creditdata &&
+              creditdata.map((credits) => (
+                <div key={credits.id}>
+                  <CastImg
+                    style={{
+                      background: `url(${
+                        credits.profile_path
+                          ? `${imgUrl_500}${credits.profile_path}`
+                          : "https://www.pngkit.com/png/full/372-3729814_profile-icon-my-profile-icon-png.png"
+                      }) no-repeat center / cover`,
+                    }}
+                  ></CastImg>
+                  <CastName>{credits.name}</CastName>
+                </div>
+              ))}
           </CastWrap>
         </Con>
       </Bg>

@@ -20,17 +20,18 @@ const MovieImg = styled.div`
   height: 250px;
 `;
 
-const MovieInformation = styled.p`
+const MovieInformation = styled.ul`
   display: flex;
   flex-direction: column;
 `;
 
-const MovieTitle = styled.p`
+const MovieTitle = styled.li`
   font-size: 18px;
+  font-weight: 600;
   margin-top: 20px;
 `;
 
-const VoteAverage = styled.p`
+const VoteAverage = styled.li`
   font-size: 18px;
   margin-top: 10px;
   span {
@@ -56,28 +57,29 @@ export const Movies = ({ movieData, title }) => {
     <Container>
       <Title>{title}</Title>
       <Swiper modules={[Navigation]} navigation {...params}>
-        {movieData.map((play) => (
-          <SwiperSlide key={play.id}>
-            <Link to={`detail/${play.id}`}>
-              <MovieImg
-                style={{
-                  background: `url(${
-                    play.backdrop_path
-                      ? `${imgUrl_500}${play.backdrop_path}`
-                      : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
-                  }) no-repeat center / cover`,
-                }}
-              />
-              <MovieInformation>
-                <MovieTitle>{play.title}</MovieTitle>
-                <VoteAverage>
-                  평점<span>:</span>
-                  {play.vote_average}
-                </VoteAverage>
-              </MovieInformation>
-            </Link>
-          </SwiperSlide>
-        ))}
+        {movieData &&
+          movieData.map((play) => (
+            <SwiperSlide key={play.id}>
+              <Link to={`detail/${play.id}`}>
+                <MovieImg
+                  style={{
+                    background: `url(${
+                      play.backdrop_path
+                        ? `${imgUrl_500}${play.backdrop_path}`
+                        : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
+                    }) no-repeat center / cover`,
+                  }}
+                />
+                <MovieInformation>
+                  <MovieTitle>{play.title}</MovieTitle>
+                  <VoteAverage>
+                    평점<span>:</span>
+                    {play.vote_average}
+                  </VoteAverage>
+                </MovieInformation>
+              </Link>
+            </SwiperSlide>
+          ))}
       </Swiper>
     </Container>
   );

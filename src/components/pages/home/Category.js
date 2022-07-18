@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 
 const Wrap = styled.section`
@@ -40,16 +39,13 @@ const SCategory = styled.li`
 `;
 
 export const Category = () => {
-  const onClickHandle = (elc) => {
-    const nowElH = document.querySelector(elc).offsetTop - 100;
-    console.log(nowElH);
+  const onClickHandle = (click) => {
+    const topEl = document.querySelector(click).offsetTop - 100;
     window.scrollTo({
-      top: nowElH,
+      top: topEl,
       left: 0,
       behavior: "smooth",
     });
-
-    // scrollEvent();
   };
 
   return (

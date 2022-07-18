@@ -83,8 +83,8 @@ const PopUp = styled.div`
 
 const CloseBtn = styled.div`
   position: absolute;
-  top: 10%;
-  right: 5%;
+  top: 50px;
+  right: 80px;
   font-size: 40px;
   z-index: 9;
   cursor: pointer;
@@ -100,7 +100,7 @@ const Iframe = styled.iframe`
   height: 700px;
   border: 1px solid white;
   @media screen and (max-width: 500px) {
-    height: 70vh;
+    height: 80vh;
   }
 `;
 
@@ -118,7 +118,6 @@ const BlackBg = styled.div`
 `;
 
 export const MainBanner = ({ playData }) => {
-  // console.log(playData.id);
   const [previewData, setPreviewData] = useState();
   const [display, setDisplay] = useState("none");
 
@@ -129,9 +128,9 @@ export const MainBanner = ({ playData }) => {
       } = await movieApi.video(playData.id);
       setPreviewData(results[0].key);
     };
-    // console.log(previewdata);
+
     homedata();
-  }, []);
+  }, [playData.id]);
 
   return (
     <Banner
