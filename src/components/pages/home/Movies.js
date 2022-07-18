@@ -26,6 +26,7 @@ const MovieTitle = styled.p`
 `;
 
 export const Movies = ({ movieData, title }) => {
+  // console.log(movieData);
   const params = {
     breakpoints: {
       320: {

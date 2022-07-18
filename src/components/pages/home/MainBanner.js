@@ -1,7 +1,6 @@
-import { faCirclePlay } from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlay, faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
 import { imgUrl } from "../../../constants/constant";
@@ -61,6 +60,11 @@ const Preview = styled.h3`
   svg {
     margin-left: 10px;
   }
+  @media screen and (max-width: 500px) {
+    position: absolute;
+    bottom: 15%;
+    left: 20px;
+  }
 `;
 
 const PopUp = styled.div`
@@ -79,17 +83,25 @@ const PopUp = styled.div`
 
 const CloseBtn = styled.div`
   position: absolute;
-  top: 100px;
-  right: 120px;
+  top: 10%;
+  right: 5%;
   font-size: 50px;
   z-index: 9;
   cursor: pointer;
+  @media screen and (max-width: 500px) {
+    font-size: 25px;
+    top: 28px;
+    right: 22px;
+  }
 `;
 
 const Iframe = styled.iframe`
   width: 80%;
   height: 700px;
   border: 1px solid white;
+  @media screen and (max-width: 500px) {
+    height: 70vh;
+  }
 `;
 
 const BlackBg = styled.div`
@@ -110,8 +122,6 @@ export const MainBanner = ({ playData }) => {
   const [previewData, setPreviewData] = useState();
   const [display, setDisplay] = useState("none");
 
-  const { id } = useParams();
-  console.log(id);
   useEffect(() => {
     const homedata = async () => {
       const {
@@ -137,7 +147,9 @@ export const MainBanner = ({ playData }) => {
       </Preview>
       {previewData ? (
         <PopUp displayresult={display}>
-          <CloseBtn onClick={() => setDisplay("none")}>x</CloseBtn>
+          <CloseBtn onClick={() => setDisplay("none")}>
+            <FontAwesomeIcon icon={faClose} />
+          </CloseBtn>
           <Iframe
             src={`https://www.youtube.com/embed/${previewData}`}
             allowfullscreen
