@@ -52,7 +52,7 @@ const Desc = styled.div`
 
 const Preview = styled.h3`
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 500;
   margin-top: 20px;
   position: relative;
   z-index: 8;
@@ -83,9 +83,9 @@ const PopUp = styled.div`
 
 const CloseBtn = styled.div`
   position: absolute;
-  top: 50px;
-  right: 80px;
-  font-size: 40px;
+  top: 80px;
+  right: 160px;
+  font-size: 30px;
   z-index: 9;
   cursor: pointer;
   @media screen and (max-width: 500px) {
@@ -144,7 +144,7 @@ export const MainBanner = ({ playData }) => {
       <Title>{playData.title}</Title>
       <Desc>{playData.overview.slice(0, 100) + "..."}</Desc>
       <Preview onClick={() => setDisplay("flex")}>
-        미리보기
+        예고편 보기
         <FontAwesomeIcon icon={faCirclePlay} />
       </Preview>
       {previewData ? (

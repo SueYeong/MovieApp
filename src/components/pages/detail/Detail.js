@@ -87,8 +87,6 @@ export const Detail = () => {
     };
     detailDate();
   }, [id]);
-  // console.log(trailer);
-  // console.log(credit);
 
   const params = {
     breakpoints: {

@@ -25,7 +25,7 @@
 - [x] Header Event
 - [x] ScrollTo
 - [x] responsive
-- [ ] Pop Up
+- [x] Pop Up
 
 ## Detail page
 
