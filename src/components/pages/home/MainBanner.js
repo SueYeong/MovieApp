@@ -70,7 +70,8 @@ const Preview = styled.h3`
 const PopUp = styled.div`
   width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(24, 24, 24, 0.8);
+  backdrop-filter: blur(5px);
   position: fixed;
   top: 0;
   left: 0;
@@ -90,17 +91,18 @@ const CloseBtn = styled.div`
   cursor: pointer;
   @media screen and (max-width: 500px) {
     font-size: 28px;
-    top: 25px;
-    right: 22px;
+    top: 18%;
+    right: 20px;
   }
 `;
 
 const Iframe = styled.iframe`
   width: 80%;
   height: 700px;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   @media screen and (max-width: 500px) {
-    height: 80vh;
+    width: 90%;
+    height: 50vh;
   }
 `;
 
