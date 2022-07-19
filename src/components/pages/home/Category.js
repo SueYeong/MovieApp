@@ -34,7 +34,7 @@ const SCategory = styled.li`
     height: 50px;
     font-size: 18px;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 15px;
   }
 `;
 

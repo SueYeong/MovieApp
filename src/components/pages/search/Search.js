@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { movieApi } from "../../../api";
-import { imgUrl } from "../../../constants/constant";
+import { imgUrl_500 } from "../../../constants/constant";
 import { Container } from "../../Container";
 import { Loading } from "../../Loading";
 import { PageTitle } from "../../PageTitle";
@@ -90,10 +90,8 @@ export const Search = () => {
     }
   };
 
-  console.log(errors);
+  // console.log(errors);
   // =>폼상태에 에러처리 담당
-
-  console.log(searchTerm);
 
   return (
     <div>
@@ -132,7 +130,7 @@ export const Search = () => {
                         style={{
                           background: `url(${
                             term.backdrop_path
-                              ? `${imgUrl}${term.backdrop_path}`
+                              ? `${imgUrl_500}${term.backdrop_path}`
                               : "https://blog.kakaocdn.net/dn/v5P3S/btqSjAo1POM/ZeJnArZDPkEHwKoC87Mt21/img.png"
                           }) no-repeat center / cover`,
                         }}
